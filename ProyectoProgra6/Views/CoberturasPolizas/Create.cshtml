@@ -1,0 +1,51 @@
+﻿@model ProyectoProgra6.Models.CoberturaPolizas
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="container">
+        <div style="border: 1px solid #d5d7dd; margin-top:30px;padding:30px; border-radius: 15px;">
+            <div class="row">
+                <div class="col-lg-9 col-md-8 col-sm-12">
+                    <div class="text-center">
+                        <h4>Creación de Coberturas</h4>
+                        <hr>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5 col-md-4 col-sm-12">
+                            <label for="txtNombre" class="form-label">Nombre:</label>
+                            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-5 col-md-4 col-sm-12">
+                            <label for="txtPApellido" class="form-label">Descripción:</label>
+                            @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-5 col-md-4 col-sm-12">
+                            <label for="txtCedula" class="form-label">Porcentaje:</label>
+                            @Html.EditorFor(model => model.Porcentaje, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Porcentaje, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group float-end">
+                        <div class="col-12">
+                            @Html.ActionLink("Back to List", "Index")
+                            <button class="btn btn-success" type="submit">Guardar</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+

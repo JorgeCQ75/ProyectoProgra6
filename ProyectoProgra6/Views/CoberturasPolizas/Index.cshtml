@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ProyectoProgra6.Models.sp_getCoberturaPolizas_Result>
+
+@{
+    ViewBag.Title = "CoberturaPolizas";
+}
+
+<h3><p>A continuación se muestran la información de las coberturas de las polizas</p></h3>
+
+<div class="table-responsive">
+    <table class="table caption-top table-sm">
+        <thead>
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Porcentaje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>@Html.DisplayFor(modelItem => item.idCoberturaPoliza)</th>
+                    <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Porcentaje)%</td>
+
+                    <td class="actions">
+                        <button class="btn btn-warning btn-sm" onClick="edit(@Html.DisplayFor(modelItem => item.idCoberturaPoliza))">Editar</button>
+                        <button class="btn btn-danger btn-sm" type="button" onClick="deleteElement(@Html.DisplayFor(modelItem => item.idCoberturaPoliza))">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @Html.ActionLink("Crear poliza nueva", "Create")
+</div>
+
+<script type="text/javascript">function deleteElement(value) {
+        debugger;
+        let url = '/CoberturasPolizas/EliminarCobertura?idCoberturaPoliza=' + value;
+        location.href = url;
+    }</script>
+
+<script type="text/javascript">function edit(value) {
+        debugger;
+        let url = '/CoberturasPolizas/Editar?idCoberturaPoliza=' + value;
+        location.href = url;
+    }</script>
